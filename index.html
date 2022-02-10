@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carosello News</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="container" id="app">
+       <!-- Item principale -->
+        <div class="items">
+            
+            <div class="item ">
+                <transition name="bounce">
+                    <img :src="items[active].url" alt="">
+                </transition>
+                <div class="text">
+                    <h3>{{items[active].name}}</h3>
+                    <p>{{items[active].text}}</p>
+                </div>
+            </div> 
+          
+        </div>
+        <!-- Parte del thums -->
+        <div class="thumbs">
+            <!-- Pulsante per andare indietro -->
+            <div @click="prev" class="prev"></div>
+            <!-- Pulsante per andare in avanti -->
+            <div @click="next" class="next"></div>
+            
+            <!-- Mignature della slide principale -->
+            <div :key="immagine.url" v-for="(immagine, index) in items" class="thumb" :class="index==active?'active ingrandisci':'' ">
+
+                <img :src="immagine.url" alt="">
+
+            </div> 
+         
+        </div>
+
+        
+    </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+   <script src="main.js"></script>
+</body>
+</html>
