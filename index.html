@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <div class="container" id="app">
+   <div class="container" id="app" @mouseleave="autoPlay" @mouseover="stopPlay">
        <!-- Item principale -->
         <div class="items">
             
@@ -28,10 +28,10 @@
             <!-- Pulsante per andare indietro -->
             <div @click="prev" class="prev"></div>
             <!-- Pulsante per andare in avanti -->
-            <div @click="next" class="next"></div>
+            <div @click="next" class="next" ></div>
             
             <!-- Mignature della slide principale -->
-            <div :key="immagine.url" v-for="(immagine, index) in items" class="thumb" :class="index==active?'active ingrandisci':'' ">
+            <div @click="imgActiv(index)" v-for="(immagine, index) in items" class="thumb" :class="index==active?'active ingrandisci':'' ">
 
                 <img :src="immagine.url" alt="">
 

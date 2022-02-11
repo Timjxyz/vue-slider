@@ -4,7 +4,7 @@ const vue= new Vue({
     data:{
 
         active:0,
-
+        clock:null,
         items: [
             {
                 url:'img/01.jpg',
@@ -34,6 +34,10 @@ const vue= new Vue({
         ],
     },
 
+    created(){
+        this.autoPlay();
+    },
+
     methods:{
 
         prev:function(){
@@ -51,6 +55,23 @@ const vue= new Vue({
                 this.active++;
             }
         },
+
+        imgActiv:function(index){
+            this.active=index;
+        },
+
+        autoPlay:function(){
+            this.clock=setInterval(()=>{
+                this.next();
+            },3000);
+        },
+
+        stopPlay(){
+            clearInterval(this.clock);
+            this.clock=null;
+        }
+
+
     }
 })
 
